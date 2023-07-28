@@ -1,0 +1,26 @@
+va_list args;
+va_start(args, format);
+
+while (*format)
+{
+	if (*format != '%')
+	{
+		_putchar(*format);
+		printed_chars++;
+	}
+	else
+	{
+		format++; /* Move past the '%' */
+		if (*format == 'c')
+		{
+			char c = va_arg(args, int);
+			_putchar(c);
+			printed_chars++;
+		}
+		/* Add handling for other specifiers (%s, %%, %d, %i) here */
+	}
+	format++;
+}
+
+va_end(args);
+
